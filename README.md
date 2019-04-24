@@ -1,5 +1,10 @@
 # HelloQUEST
 
+## Notes on datalinkage/webapp/humanity_parser.py:
+* Currently only able to take .csv files due to formatting issues with Excel (.xslx) files
+* Must have a .csv file of Humanity data in the directory to output a parsed .csv file.
+* To create an .xslx file, need to manually convert outputted .csv file to .xlsx with Microsoft Excel.
+
 ## Notes on eventIDGenerator.py:
 * Currently asks for the row number in the excel sheet and the abbreviation of the office code. Still need to look into the autmatic generation of the office code, and we'll be set.
 * The last four digits are just randomly generated. Will deal with pulling the pin from existing data once I figure out a source.
