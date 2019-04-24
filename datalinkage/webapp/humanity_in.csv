@@ -1,0 +1,86 @@
+﻿employee,eid,location,start_day,start_time,end_time,total_time,shift_title
+Brad Fletcher,3066360,"Pittsburgh, PA",3/4/19,3:27 PM,9:36 PM,6.15,Pittsburgh Home and Garden Show ~102.PIT0319
+Shane McFarland,3108125,"Pittsburgh, PA",3/4/19,3:28 PM,9:49 PM,6.35,Pittsburgh Home and Garden Show ~102.PIT0319
+Sara Dalton,3070757,"Cleveland, OH",3/4/19,7:30 AM,3:26 PM,7.93,USA Fencing 2019 March North American Cup ~234.CLE0319
+Nathan Luciano,3063311,"Cleveland, OH",3/4/19,7:34 AM,3:26 PM,7.87,USA Fencing 2019 March North American Cup ~234.CLE0319
+Jordan Dotson,3078078,"Atlanta, GA",3/4/19,9:40 AM,3:40 PM,6,Market @ Macy's ~270.ATL0319
+Jasmine Bennett,3157107,"Atlanta, GA",3/4/19,9:47 AM,8:58 PM,11.19,Market @ Macy's ~270.ATL0319
+Margaret Hurt,3178841,"Atlanta, GA",3/4/19,3:35 PM,9:15 PM,5.67,Market @ Macy's ~270.ATL0319
+Justin Utter,3091445,"Pittsburgh, PA",3/4/19,9:41 AM,2:50 PM,5.15,Macy's ~270.PIT0319
+Joseph Rakiewicz,3059113,"Pittsburgh, PA",3/4/19,9:42 AM,3:01 PM,5.31,Macy's ~270.PIT0319
+Dylan Contrino,3182221,"Pittsburgh, PA",3/4/19,2:55 PM,9:15 PM,6.33,Macy's ~270.PIT0319
+Mahalia Campbell,3163796,"Seattle, WA",3/4/19,9:30 AM,3:27 PM,5.95,Macy's at Alderwood ~270.SEA0319
+Taylor Winn,3037715,"Seattle, WA",3/4/19,9:35 AM,3:30 PM,5.91,Macy's at Alderwood ~270.SEA0319
+Nathan Craft,3037713,"Seattle, WA",3/4/19,3:25 PM,9:55 PM,6.51,Macy's at Alderwood ~270.SEA0319
+Marcel Goodlow,2857234,"Seattle, WA",3/4/19,3:25 PM,9:42 PM,6.29,Macy's at Alderwood ~270.SEA0319
+Thomas Parfenchuck,3178843,"Austin, TX",3/4/19,5:40 PM,9:45 PM,4.09,24 Hour Fitness Hwy 183 ~276.AUS0319
+Stephen Kipp,3078092,"Denver, CO",3/4/19,2:49 PM,9:11 PM,6.36,24 Hour Fitness- Arvada ~276.DEN0319
+Sofia Beer,3189700,"Denver, CO",3/4/19,2:40 PM,9:08 PM,6.47,24 Hour Fitness- Centennial ~276.DEN0319
+Mackenzie Leicht,3066347,"Denver, CO",3/4/19,2:41 PM,9:11 PM,6.49,24 Hour Fitness- Centennial ~276.DEN0319
+Nicole Volpe,3186104,"Denver, CO",3/4/19,2:44 PM,9:11 PM,6.45,24 Hour Fitness- Denver Academy ~276.DEN0319
+Tyler Nials,3066348,"Denver, CO",3/4/19,2:55 PM,9:21 PM,6.43,24 Hour Fitness- Denver Alameda ~276.DEN0319
+Christina Arredondo,2916750,"Dallas, TX",3/4/19,2:55 PM,8:56 PM,6.01,24 Hour Fitness - 1101 N Walnut Creek Dr ~276.DFW0319
+Hannah Rotwein,3189699,"Dallas, TX",3/4/19,2:57 PM,9:09 PM,6.19,24 Hour Fitness - 3865 Preston Rd ~276.DFW0319
+Amanda Alyea,3091404,"Dallas, TX",3/4/19,3:08 PM,9:09 PM,6.03,24 Hour Fitness - 3865 Preston Rd ~276.DFW0319
+Leigh Hammonds,3189696,"Dallas, TX",3/4/19,4:12 PM,9:12 PM,5,24 Hour Fitness - 6000 Quebec St ~276.DFW0319
+Gabrielle Mire,3186096,"Houston, TX",3/4/19,3:57 PM,9:10 PM,5.23,24 Hour Fitness - Humble ~276.HOU0319
+Trina Thomas,3184467,"Houston, TX",3/4/19,3:58 PM,9:10 PM,5.21,24 Hour Fitness - Humble ~276.HOU0319
+Jennifer Ikhalia,3001652,"Houston, TX",3/4/19,3:59 PM,9:07 PM,5.13,24 Hour Fitness - Nasa ~276.HOU0319
+Ava Albert,3186103,"Houston, TX",3/4/19,4:08 PM,9:02 PM,4.91,24 Hour Fitness - Pearland ~276.HOU0319
+Sibyl Salazar-Wade,938064,"Houston, TX",3/4/19,3:58 PM,9:11 PM,5.2,24 Hour Fitness - Sugar Land ~276.HOU0319
+Michael LaMastus,3182217,"Houston, TX",3/4/19,4:15 PM,9:14 PM,4.98,24 Hour Fitness - Sugar Land ~276.HOU0319
+Cyrus Zerbe,3172178,"Seattle, WA",3/4/19,3:33 PM,9:00 PM,5.44,24hr Fitness Tacoma Supersport ~276.SEA0319
+Sarah Pena,3091433,"Santa Ana, CA",3/4/19,2:55 PM,9:14 PM,6.33,24 Hour Fitness Costa Mesa 19th Street ~276.SNA0319
+Charles Melzer,3086513,"Santa Ana, CA",3/4/19,3:09 PM,9:13 PM,6.06,24 Hour Fitness Costa Mesa 19th Street ~276.SNA0319
+Tyler Mullins,3033684,"Denver, CO",3/4/19,9:27 AM,3:22 PM,5.91,Flatirons Crossing ~277.DEN0319
+Emily Maher,3060528,"Denver, CO",3/4/19,2:56 PM,8:20 PM,5.4,Flatirons Crossing ~277.DEN0319
+Cisito Macia,3178860,"Phoenix, AZ",3/4/19,3:29 PM,9:07 PM,5.64,Arrowhead Towne Center ~277.PHX0319
+Aubree Roach,3116251,"Phoenix, AZ",3/4/19,9:54 AM,3:53 PM,5.98,San Tan Village Mall ~277.PHX0319
+Coree Pledge,3100047,"Phoenix, AZ",3/4/19,3:26 PM,9:02 PM,5.6,San Tan Village Mall ~277.PHX0319
+Brittney Hiersche,3047884,"Phoenix, AZ",3/4/19,3:28 PM,8:58 PM,5.51,San Tan Village Mall ~277.PHX0319
+David Hinton,3055297,"Atlanta, GA",3/4/19,9:25 AM,3:29 PM,6.07,Perimeter Mall ~279.ATL0319
+Deontae Brown,3132516,"Atlanta, GA",3/4/19,3:25 PM,9:31 PM,6.1,Perimeter Mall ~279.ATL0319
+Andrew Evans,3059094,"Atlanta, GA",3/4/19,3:29 PM,9:29 PM,6,Perimeter Mall ~279.ATL0319
+Tyya Doss,3189698,"Dallas, TX",3/4/19,6:29 PM,10:29 PM,4,TCU Basketball ~86.DFW0319
+Erik Stromswold,3100050,"Santa Ana, CA",3/4/19,4:55 PM,9:00 PM,4.08,Golds Gym Fullerton ~87.SNA0319
+Jordan Stemple,3078104,"Indianapolis, IN",3/4/19,2:56 PM,7:03 PM,4.11,9 round Fitness- E 82nd St
+Kathy Hoyt,3026166,"Seattle, WA",3/4/19,2:27 PM,7:36 PM,5.15,Anytime Fitness - Dupont
+Kevin O'Connell,3075159,"Santa Ana, CA",3/4/19,4:15 PM,8:00 PM,3.75,Anytime Fitness San Clemente
+Hannah Kirschner,3037648,"Pittsburgh, PA",3/4/19,3:06 PM,7:09 PM,4.06,Anytime Fitness- Brentwood
+John Zagorski,3051745,"Atlanta, GA",3/4/19,1:55 PM,7:00 PM,5.08,Anytime Fitness- Canton Rd
+Erica pierno,3116266,"Atlanta, GA",3/4/19,9:55 AM,3:15 PM,5.33,Athleta Avalon
+Hannah Hornsby,3108108,"Atlanta, GA",3/4/19,10:02 AM,3:29 PM,5.46,Athleta Avalon
+Alana Fox,3063274,"Boston, MA",3/4/19,1:55 PM,8:18 PM,6.38,BSC- Government Center
+Allie Dang,3075170,"Boston, MA",3/4/19,2:00 PM,8:00 PM,6,BSC- Government Center
+Jonathan Kumin,3178846,"Cleveland, OH",3/4/19,2:57 PM,9:05 PM,6.13,Cleveland Fitness Club
+Katherine Vosik,3045040,"Denver, CO",3/4/19,7:45 AM,1:15 PM,5.5,Club USA Fitness
+Sydney Ellerstein,3186108,"Denver, CO",3/4/19,7:59 AM,1:03 PM,5.06,Club USA Fitness
+Katherine Vosik,3045040,"Denver, CO",3/4/19,3:42 PM,8:55 PM,5.22,Club USA Fitness
+Lauren Becks,3178850,"Columbus, OH",3/4/19,3:02 PM,9:03 PM,6.02,Crunch Fitness - Hilliard
+Gregory Anderson,3055295,"Pleasanton, CA",3/4/19,3:58 PM,8:02 PM,4.07,Equinox Union Street
+Stuart Campbell,2902727,"Columbus, OH",3/4/19,2:58 PM,8:59 PM,6.02,Fitness 19 - Westerville
+Danielle Loiselle,3147202,"Jacksonville, FL",3/4/19,4:10 PM,7:42 PM,3.53,Full Psycle
+Olivia Pataky,3157101,"Jacksonville, FL",3/4/19,4:17 PM,7:48 PM,3.52,Full Psycle
+Vincent Roberts,3186100,"Austin, TX",3/4/19,4:04 PM,9:02 PM,4.98,Gold’s Gym -Austin Tech Ridge
+Cory Rahrig,3168464,"Austin, TX",3/4/19,4:12 PM,8:54 PM,4.69,Gold’s Gym -Austin Tech Ridge
+Kassie Moore,3116258,"Atlanta, GA",3/4/19,2:55 PM,9:01 PM,6.1,LA FItness- Buford Dr
+Haley Wright,3168462,"Atlanta, GA",3/4/19,3:12 PM,9:27 PM,6.25,LA FItness- Buford Dr
+Erica Holbert,3091421,"Atlanta, GA",3/4/19,2:56 PM,8:08 PM,5.21,LA Fitness- Peachtree Rd
+Lisa Steinbaum,3189703,"New York, NY",3/4/19,3:25 PM,9:09 PM,5.74,New York Sports Clubs - Hoboken North
+Devin Nash,3075149,"Atlanta, GA",3/4/19,2:43 PM,9:07 PM,6.39,Orange Theory Brookhaven
+Sarah Grunow,3163779,"Atlanta, GA",3/4/19,2:44 PM,9:14 PM,6.5,Orange Theory Brookhaven
+Jonathan Harris,3186107,"Austin, TX",3/4/19,4:16 PM,9:16 PM,5,Orangetheory Fitness Circle C
+Eric Hoyt,3186101,"Austin, TX",3/4/19,3:55 PM,9:19 PM,5.4,Orangetheory Fitness- S. Lamar
+Denisse Andrade,3176087,"Austin, TX",3/4/19,5:05 PM,10:16 PM,5.18,Orangetheory Fitness- S. Lamar
+Monique Maione,3108119,"Jacksonville, FL",3/4/19,2:57 PM,9:22 PM,6.42,Planet Fitness - Beach Blvd
+Katrina Glynn,3055323,"Jacksonville, FL",3/4/19,3:01 PM,9:21 PM,6.33,Planet Fitness - Beach Blvd
+Emily MacNeil,3070756,"Boston, MA",3/4/19,2:41 PM,8:15 PM,5.56,Planet Fitness Burlington
+Chloe Galluccio,3163780,"Boston, MA",3/4/19,2:45 PM,8:18 PM,5.55,Planet Fitness Burlington
+Ariana Viscariello,3186400,"Boston, MA",3/4/19,2:49 PM,8:15 PM,5.43,Planet Fitness Burlington
+Tiffani Lake,3030047,"Phoenix, AZ",3/4/19,3:58 PM,8:01 PM,4.05,Planet Fitness Grand Opening
+Cassidy Foudray,3091419,"Phoenix, AZ",3/4/19,4:07 PM,8:03 PM,3.93,Planet Fitness Grand Opening
+Molly Schuette,3147206,"Cleveland, OH",3/4/19,12:11 PM,4:06 PM,3.92,Pottery Barn - Beachwood Mall
+Jack Grady,3163784,"Cleveland, OH",3/4/19,10:06 AM,1:59 PM,3.88,Pottery Barn Kids - LA Place
+Douglas Schnittker,3066356,"Jacksonville, FL",3/4/19,3:26 PM,8:18 PM,4.86,The Exchange Fitness
+Richard Packard,2990682,"Houston, TX",3/4/19,4:00 PM,9:02 PM,5.03,UFC Gym Pearland
+Nathan Walker,3059121,"Phoenix, AZ",3/4/19,3:40 PM,8:11 PM,4.53,YouFit- Greenway
