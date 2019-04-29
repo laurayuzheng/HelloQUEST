@@ -23,7 +23,11 @@
 * Currently asks for the row number in the excel sheet and the abbreviation of the office code. Still need to look into the autmatic generation of the office code, and we'll be set.
 * The last four digits are just randomly generated. Will deal with pulling the pin from existing data once I figure out a source.
 
-## Getting Started
+## Getting Started (Windows)
+### Download Github Desktop
+* https://desktop.github.com/
+
+## Getting Started (MAC OSX)
 ### Here is a list of commands to run in **Terminal** before running this code:
 * xcode-select --install
 * /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
