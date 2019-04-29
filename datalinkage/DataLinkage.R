@@ -115,6 +115,7 @@ combined_2 = merge(master_sales, shifts_worked, by.x = c("Employee ID", "Office 
 rm(master_sales, shifts_worked)
 
 #clean the combined sheet of incomplete entries
+# ********* TO DO *********
 combined_2[is.na(combined_2)] = 0
 combined_2 = combined_2[combined_2$`Employee ID` > 0 & combined_2$`Office Name Formatted` != 0 &
                       combined_2$Date != 0 & combined_2$shift_title != "0", ]

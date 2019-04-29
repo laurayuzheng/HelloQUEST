@@ -26,7 +26,7 @@ bob['date_sign_up'] = bob['date_sign_up'].dt.strftime('%m/%d/%y')
 
 # drop unnecessary columns
 bob = bob.drop(['initial_sales_order_nr','customer_name'], axis=1)
-bob.to_csv('output/'+bob_out) #, sheet_name='Sheet1')
+ #, sheet_name='Sheet1')
 
 # cleaning humanity sheet
 humanity['start_day'] = pd.to_datetime(humanity['start_day'], format='%m/%d/%y')
@@ -38,5 +38,15 @@ humanity['start_time'] = humanity['start_time'].dt.strftime('%H:%M')
 humanity['end_time'] = pd.to_datetime(humanity['end_time'],format='%I:%M %p')
 humanity['end_time'] = humanity['end_time'].dt.strftime('%H:%M')
 humanity = humanity.dropna(subset=['eid', 'location','shift_title'])
-#humanity = humanity['eid', 'location', 'shift_title'].notnull()
+
+# merging humanity and bob
+# replacing NaN values with 0
+joined = pd.merge(bob, humanity, left_on=['Master Sales',
+	'Office','Date'], right_on=['eid','location','start_day'])
+joined = joined.fillna(0)
+
+# TO DO: format time zones, get processed bob sheet from james
+
+# output all to csv files
+bob.to_csv('output/'+bob_out)
 humanity.to_csv('output/'+humanity_out, index=False)
