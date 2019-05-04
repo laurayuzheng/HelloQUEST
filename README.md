@@ -5,6 +5,19 @@
 * take care of time stamp stuff in python version
 * link SEL 2.1 to bob and humanity join
 
+## 5-4-2019 Updates
+### Notes on datalinkage/datalink.py
+* added a month string field to differentiate separate month file names
+* changed from inner to full outer join on humanity and bob
+* standardized the order of colummns
+* creates a general joined file, nosale excel file, paid events file, and free events file
+* TO DO: 
+  * create aggregate sale file by event id, then merge with SEL
+  * clean the code into methods
+  * create an executable / GUI
+  * question: should I create a file that aggregates by employee id?
+    * this would be more about employee performance than event performance.
+
 ## 4-29-2019 Updates
 ### Notes on datalinkage/datalink.py
 * currently able to [inner] join on humanity and bob

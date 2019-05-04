@@ -4,6 +4,13 @@ from pandas import ExcelFile
 from datetime import datetime, timedelta
 from pytz import timezone
 
+def set_num_sales(row):
+    if row['customer_id'] == 0:
+        val = 0
+    else:
+        val = 1
+    return val
+
 standard_tz = timezone('US/Eastern')
 
 timezones = {
@@ -29,6 +36,9 @@ timezones = {
 	'Seattle, WA' : timezone('US/Pacific'),
 	'Tampa, FL' : timezone('US/Eastern')}
 
+# current month
+month = '2019-03'
+
 # file names
 bob_name = 'mastersales.xlsx'
 humanity_name = 'humanity_eventid.xlsx'
@@ -38,6 +48,10 @@ sel_name = '2019-03 SEL.xlsx'
 bob_out = 'bob_out.xlsx'
 humanity_out = 'humanity_out.xlsx'
 sel_out = 'sel_out.xlsx'
+joined_out = month + '_' + 'joined.xlsx'
+free_events_out = month + '_' + 'free_events.xlsx'
+nosale_out = month + '_' + 'no_sale.xlsx'
+paid_events_out = month + '_' + 'paid_events.xlsx'
 
 # load data files
 bob = pd.read_excel('input/' + bob_name, sheet_name=0)
@@ -50,7 +64,10 @@ sel = pd.read_excel('input/' + sel_name, sheet_name=0)
 
 bob['date_sign_up'] = pd.to_datetime(bob['date_sign_up'], format='%m/%d/%y %-H:%M')
 bob['date_sign_up'] = bob['date_sign_up'].dt.strftime('%m/%d/%y')
-
+bob.rename(columns={'Employee ID' : 'eid', 'Office':'office',
+                          'Box Type':'box_type',
+                          'date_sign_up':'date'}, 
+                 inplace=True)
 # drop unnecessary columns
 # bob = bob.drop(['initial_sales_order_nr','customer_name'], axis=1)
  #, sheet_name='Sheet1')
@@ -58,6 +75,8 @@ bob['date_sign_up'] = bob['date_sign_up'].dt.strftime('%m/%d/%y')
 # cleaning humanity sheet
 humanity['start_day'] = pd.to_datetime(humanity['start_day'], format='%m/%d/%y')
 humanity['start_day'] = humanity['start_day'].dt.strftime('%m/%d/%y')
+humanity.rename(columns={'location':'office','start_day':'date'}, 
+                 inplace=True)
 
 #print(humanity['start_time'])
 #print(humanity['start_time'])
@@ -65,12 +84,12 @@ humanity['start_time'] = pd.to_datetime(humanity['start_time'],format='%H:%M:%S'
 #humanity['start_time'] = humanity['start_time'].dt.strftime('%H:%M')
 humanity['end_time'] = pd.to_datetime(humanity['end_time'],format='%H:%M:%S')
 #humanity['end_time'] = humanity['end_time'].dt.strftime('%H:%M')
-humanity = humanity.dropna(subset=['eid', 'location','shift_title'])
+humanity = humanity.dropna(subset=['eid', 'office','shift_title'])
 
 # localize the time zones, then set time zones to eastern
 # then, convert the new time zone to a string
 for i, row in humanity.iterrows():
-	tz = timezones[row['location']]
+	tz = timezones[row['office']]
 	#print("before: " + humanity.at[i,'start_time'].strftime('%H:%M'))
 	
 	humanity.at[i,'start_time'] = tz.localize(row['start_time']) \
@@ -85,14 +104,35 @@ humanity['end_time'] = humanity['end_time'].dt.strftime('%H:%M')
 
 # merging humanity and bob
 # replacing NaN values with 0
-joined = pd.merge(bob, humanity, left_on=['Employee ID',
-	'Office','date_sign_up'], right_on=['eid','location','start_day'])
+joined = pd.merge(bob, humanity, on=['eid', 'office', 'date'], how='outer')
+#joined = joined.drop(columns=['location', 'start_day', 'Employee ID'])
+#joined.rename(columns={'Office':'office',
+#                          'Box Type':'box_type',
+#                          'date_sign_up':'date'}, 
+#                 inplace=True)
+
 joined = joined.fillna(0)
+joined = joined[joined['eid'] > 0]
+joined = joined[joined['office'] != 0]
+joined = joined[joined['date'] != 0]
+joined = joined[joined['shift_title'] != 0]
+joined['num_sales'] = joined.apply(set_num_sales,axis=1)
 
-# TO DO: format time zones
+# standardize the column order
+joined = joined[['eid','customer_id','event_id', 'num_sales',
+				'office','box_type','date','start_time','end_time',
+				'total_time','shift_title']]
 
+nosales = joined[joined['customer_id'] == 0]
+free_events = joined[joined['event_id'] == 0]
+paid_events = joined[joined['event_id'] != 0]
+
+# figure out where empty customer id's come from to see events with no sales
 
 # output all to csv files
 bob.to_excel('output/'+ bob_out)
 humanity.to_excel('output/' + humanity_out)
-joined.to_excel('output/joined.xlsx', index=None)
+joined.to_excel('output/' + joined_out, index=None)
+nosales.to_excel('output/' + nosale_out, index=None)
+free_events.to_excel('output/' + free_events_out, index=None)
+paid_events.to_excel('output/' + paid_events_out, index=None)
