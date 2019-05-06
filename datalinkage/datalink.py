@@ -39,6 +39,9 @@ timezones = {
 # current month
 month = '2019-03'
 
+# average wage
+avg_wage = 13.72
+
 # file names
 bob_name = 'mastersales.xlsx'
 humanity_name = 'humanity_eventid.xlsx'
@@ -61,6 +64,9 @@ sel = pd.read_excel('input/' + sel_name, sheet_name=0)
 # no need to filter hellofresh from bob anymore
 
 # formatting dates in bob
+
+sel.rename(columns={'Event ID':'event_id', 'Category of Event':'category',
+	'Market':'market','Amortized Cost':'amortized_cost'}, inplace=True)
 
 bob['date_sign_up'] = pd.to_datetime(bob['date_sign_up'], format='%m/%d/%y %-H:%M')
 bob['date_sign_up'] = bob['date_sign_up'].dt.strftime('%m/%d/%y')
@@ -127,12 +133,27 @@ nosales = joined[joined['customer_id'] == 0]
 free_events = joined[joined['event_id'] == 0]
 paid_events = joined[joined['event_id'] != 0]
 
-# figure out where empty customer id's come from to see events with no sales
+# start here
+sel = sel[['event_id','category','market','amortized_cost']]
+per_shift = joined.groupby(['eid','shift_title','office','start_time','end_time',
+	'date','event_id'], as_index=False).agg({'num_sales' : 'sum', 'total_time':'sum'})
+# [['num_sales','total_time','box_type']].sum()
+#print(per_shift)
+per_shift['wage_cost'] = (avg_wage * per_shift['total_time']).round(decimals=2)
+
+per_event = per_shift.groupby(['shift_title','office','event_id'], as_index=False).agg({'num_sales' : 'sum', 'total_time':'sum','wage_cost':'sum'})
+
+combined = pd.merge(per_event, sel, on='event_id', how='outer')
+combined = combined.fillna(0)
+combined['total_cost'] = combined['wage_cost'] + combined['amortized_cost']
 
 # output all to csv files
+per_shift.to_excel('output/' + 'per_shift.xlsx', index=None)
+per_event.to_excel('output/' + 'per_event.xlsx', index=None)
 bob.to_excel('output/'+ bob_out)
 humanity.to_excel('output/' + humanity_out)
 joined.to_excel('output/' + joined_out, index=None)
 nosales.to_excel('output/' + nosale_out, index=None)
 free_events.to_excel('output/' + free_events_out, index=None)
 paid_events.to_excel('output/' + paid_events_out, index=None)
+combined.to_excel('output/' + 'combined.xlsx', index=None)
