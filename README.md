@@ -2,8 +2,12 @@
 
 ## TO DO:
 * create script that automates adam's master sheet process
-* take care of time stamp stuff in python version
-* link SEL 2.1 to bob and humanity join
+* pack these scripts into executable using 
+  * pyinstaller
+  * tkinter
+
+## 5-9-2019 Updates
+* sheets are all linked, but need to check accuracy of numbers 
 
 ## 5-4-2019 Updates
 ### Notes on datalinkage/datalink.py
