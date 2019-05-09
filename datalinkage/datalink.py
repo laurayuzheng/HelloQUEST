@@ -136,7 +136,7 @@ paid_events = joined[joined['event_id'] != 0]
 # start here
 sel = sel[['event_id','category','market','amortized_cost']]
 per_shift = joined.groupby(['eid','shift_title','office','start_time','end_time',
-	'date','event_id'], as_index=False).agg({'num_sales' : 'sum', 'total_time':'sum'})
+	'total_time','event_id'], as_index=False).agg({'num_sales' : 'sum'})
 # [['num_sales','total_time','box_type']].sum()
 #print(per_shift)
 per_shift['wage_cost'] = (avg_wage * per_shift['total_time']).round(decimals=2)
