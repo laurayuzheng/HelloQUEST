@@ -1,10 +1,15 @@
 # HelloQUEST
 
 ## TO DO:
-* create script that automates adam's master sheet process
 * pack these scripts into executable using 
   * pyinstaller
   * tkinter
+
+## 5-10-2019 Updates
+* everyting was linked correctly, now need to create user interface portion
+* ideas for interface:
+  * check boxes for which sheets to be exported
+  * fields for month, timezone, average wage, file names
 
 ## 5-9-2019 Updates
 * sheets are all linked, but need to check accuracy of numbers 
