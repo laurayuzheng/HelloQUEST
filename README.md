@@ -1,12 +1,14 @@
 # HelloQUEST
 
 ## TO DO:
+* integrate adams master sheet creator to main file
 * pack these scripts into executable using 
   * pyinstaller
   * tkinter
 
 ## 5-10-2019 Updates
 * everyting was linked correctly, now need to create user interface portion
+* integrated humanity parser into main file
 * ideas for interface:
   * check boxes for which sheets to be exported
   * fields for month, timezone, average wage, file names
