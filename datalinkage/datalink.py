@@ -3,6 +3,8 @@ from pandas import ExcelWriter
 from pandas import ExcelFile
 from datetime import datetime, timedelta
 from pytz import timezone
+import tkinter as tk
+from tkinter import filedialog
 
 # current month
 month = '2019-03'
@@ -16,13 +18,16 @@ humanity_name = '2019-03 Humanity'
 sel_name = '2019-03 SEL.xlsx'
 
 # output files
-bob_out = 'bob_out.xlsx'
-humanity_out = 'humanity_out.xlsx'
-sel_out = 'sel_out.xlsx'
-joined_out = month + '_' + 'joined.xlsx'
+#bob_out = 'bob_out.xlsx'
+#humanity_out = 'humanity_out.xlsx'
+#sel_out = 'sel_out.xlsx'
+#joined_out = month + '_' + 'joined.xlsx'
 free_events_out = month + '_' + 'free_events.xlsx'
 nosale_out = month + '_' + 'no_sale.xlsx'
 paid_events_out = month + '_' + 'paid_events.xlsx'
+per_shift_out = month + '_' + 'per_shift.xlsx'
+per_event_out = month + '_' + 'per_event_out.xlsx'
+combined_out = month + '_' + 'combined_out.xlsx'
 
 standard_tz = timezone('US/Eastern')
 
@@ -48,6 +53,24 @@ timezones = {
 	'Santa Ana, CA' : timezone('US/Pacific'),
 	'Seattle, WA' : timezone('US/Pacific'),
 	'Tampa, FL' : timezone('US/Eastern')}
+
+def write_slogan():
+    print(bob_name + '\n' + humanity_name + '\n' + sel_name)
+
+def open_bob():
+	global bob_name
+	bob_name = filedialog.askopenfilename(title = "Select BOB file",
+		filetypes = (("xlsx files","*.xlsx"),("all files","*.*")))
+
+def open_humanity():
+	global humanity_name
+	humanity_name = filedialog.askopenfilename(title = "Select Humanity file",
+		filetypes = (("xlsx files","*.xlsx"),("all files","*.*")))
+
+def open_SEL():
+	global sel_name
+	sel_name = filedialog.askopenfilename(title = "Select SEL file",
+		filetypes = (("xlsx files","*.xlsx"),("all files","*.*")))
 
 def set_num_sales(row):
     if row['customer_id'] == 0:
@@ -87,7 +110,7 @@ def threefour(row):
 		return 0
 
 def parse_eventid():
-	data = pd.read_excel("input/" + humanity_name + ".xlsx", sheet_name=0)
+	data = pd.read_excel(humanity_name, sheet_name=0)
 	data.dropna(subset=['shift_title'], inplace = True)
 
 	new = data["shift_title"].str.split("~", n = 1, expand = True)
@@ -100,12 +123,12 @@ def parse_eventid():
 	return data
 	#data.to_excel("input/" + file_out + ".xlsx", index=None)
 
-def combine(humanity): 
+def combine(): 
 	# load data files
-	bob = pd.read_excel('input/' + bob_name, sheet_name=0)
+	bob = pd.read_excel(bob_name, sheet_name=0)
 	#humanity = pd.read_excel('input/' + humanity_name)
-	sel = pd.read_excel('input/' + sel_name, sheet_name=0)
-
+	sel = pd.read_excel(sel_name, sheet_name=0)
+	humanity = parse_eventid()
 	# no need to filter hellofresh from bob anymore
 
 	# formatting dates in bob
@@ -207,16 +230,44 @@ def combine(humanity):
 	'amortized_cost','total_cost']]
 
 	# output all to csv files
-	per_shift.to_excel('output/' + 'per_shift.xlsx', index=None)
-	per_event.to_excel('output/' + 'per_event.xlsx', index=None)
-	bob.to_excel('output/'+ bob_out)
-	humanity.to_excel('output/' + humanity_out)
-	joined.to_excel('output/' + joined_out, index=None)
+	per_shift.to_excel('output/' + per_shift_out, index=None)
+	per_event.to_excel('output/' + per_event_out, index=None)
+	#bob.to_excel('output/'+ bob_out)
+	#humanity.to_excel('output/' + humanity_out)
+	#joined.to_excel('output/' + joined_out, index=None)
 	nosales.to_excel('output/' + nosale_out, index=None)
 	free_events.to_excel('output/' + free_events_out, index=None)
 	paid_events.to_excel('output/' + paid_events_out, index=None)
-	combined.to_excel('output/' + 'combined.xlsx', index=None)
+	combined.to_excel('output/' + combined_out, index=None)
 
 if __name__ == "__main__":
-	humanity = parse_eventid()
-	combine(humanity)
+#	combine(humanity)
+	root = tk.Tk()
+	frame = tk.Frame(root)
+	root.geometry("400x300")
+	root.configure(background='#F2F5DC')
+	frame.pack()
+
+	bob_button = tk.Button(frame, 
+	                   text="Upload BOB File", 
+	                   command=open_bob)
+
+	bob_button.pack(side=tk.TOP)
+
+	humanity_button = tk.Button(frame, 
+	                   text="Upload Humanity File", 
+	                   command=open_humanity)
+	humanity_button.pack(side=tk.TOP)
+
+	sel_button = tk.Button(frame, 
+	                   text="Upload SEL File", 
+	                   command=open_SEL)
+	sel_button.pack(side=tk.TOP)
+
+	combine_button = tk.Button(frame,
+	                   text="Combine!",
+	                   command=combine)
+	combine_button.pack(side=tk.TOP)
+
+	root.mainloop()
+	
