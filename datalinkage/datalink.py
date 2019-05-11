@@ -13,9 +13,9 @@ month = '2019-03'
 avg_wage = 13.72
 
 # file names
-bob_name = 'mastersales.xlsx'
-humanity_name = '2019-03 Humanity'
-sel_name = '2019-03 SEL.xlsx'
+bob_name = ''
+humanity_name = ''
+sel_name = ''
 
 # output files
 #bob_out = 'bob_out.xlsx'
@@ -26,8 +26,8 @@ free_events_out = month + '_' + 'free_events.xlsx'
 nosale_out = month + '_' + 'no_sale.xlsx'
 paid_events_out = month + '_' + 'paid_events.xlsx'
 per_shift_out = month + '_' + 'per_shift.xlsx'
-per_event_out = month + '_' + 'per_event_out.xlsx'
-combined_out = month + '_' + 'combined_out.xlsx'
+per_event_out = month + '_' + 'per_event.xlsx'
+combined_out = month + '_' + 'combined.xlsx'
 
 standard_tz = timezone('US/Eastern')
 
@@ -229,24 +229,91 @@ def combine():
 	'total_time','2x2','3x2','2x4','4x2','3x4','market','wage_cost',
 	'amortized_cost','total_cost']]
 
+	#print(per_shift_boolean.get())
+	#print(per_event_boolean.get())
+	#print(nosale_boolean.get())
+	#print(free_events_boolean.get())
+	#print(paid_events_boolean.get())
+	#print(combined_boolean.get())
+
 	# output all to csv files
-	per_shift.to_excel('output/' + per_shift_out, index=None)
-	per_event.to_excel('output/' + per_event_out, index=None)
+	if per_shift_boolean.get():
+		per_shift.to_excel('output/' + per_shift_out, index=None)
+	
+	if per_event_boolean.get():
+		per_event.to_excel('output/' + per_event_out, index=None)
 	#bob.to_excel('output/'+ bob_out)
 	#humanity.to_excel('output/' + humanity_out)
 	#joined.to_excel('output/' + joined_out, index=None)
-	nosales.to_excel('output/' + nosale_out, index=None)
-	free_events.to_excel('output/' + free_events_out, index=None)
-	paid_events.to_excel('output/' + paid_events_out, index=None)
-	combined.to_excel('output/' + combined_out, index=None)
+	if nosale_boolean.get(): 
+		nosales.to_excel('output/' + nosale_out, index=None)
+	
+	if free_events_boolean.get():
+		free_events.to_excel('output/' + free_events_out, index=None)
+	
+	if paid_events_boolean.get():
+		paid_events.to_excel('output/' + paid_events_out, index=None)
+	
+	if combined_boolean.get():
+		combined.to_excel('output/' + combined_out, index=None)
 
 if __name__ == "__main__":
+
 #	combine(humanity)
 	root = tk.Tk()
 	frame = tk.Frame(root)
 	root.geometry("400x300")
 	root.configure(background='#F2F5DC')
 	frame.pack()
+
+	combined_boolean = tk.IntVar();
+	nosale_boolean = tk.IntVar();
+	free_events_boolean = tk.IntVar();
+	paid_events_boolean = tk.IntVar();
+	per_shift_boolean = tk.IntVar();
+	per_event_boolean = tk.IntVar();
+
+	combined_cb = tk.Checkbutton(frame,
+						text="combined",
+						variable=combined_boolean,
+						#onvalue=True, offvalue=False
+				)
+	combined_cb.pack(side=tk.TOP)
+
+	nosale_cb = tk.Checkbutton(frame,
+						text="no sale events",
+						variable=nosale_boolean,
+						#onvalue=True, offvalue=False
+				)
+	nosale_cb.pack(side=tk.TOP)
+
+	free_cb = tk.Checkbutton(frame,
+						text="free events",
+						variable=free_events_boolean,
+						#onvalue=True, offvalue=False
+				)
+	free_cb.pack(side=tk.TOP)
+
+	paid_cb = tk.Checkbutton(frame,
+						text="paid events",
+						variable=paid_events_boolean,
+						#onvalue=True, offvalue=False
+				)
+	paid_cb.pack(side=tk.TOP)
+
+	shift_cb = tk.Checkbutton(frame,
+						text="per shift",
+						variable=per_shift_boolean,
+						#onvalue=True, offvalue=False
+				)
+	shift_cb.pack(side=tk.TOP)
+
+	event_cb = tk.Checkbutton(frame,
+						text="per event",
+						variable=per_event_boolean,
+						#onvalue=True, offvalue=False
+				)
+	event_cb.pack(side=tk.TOP)
 
 	bob_button = tk.Button(frame, 
 	                   text="Upload BOB File", 
