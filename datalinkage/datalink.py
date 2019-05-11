@@ -7,10 +7,10 @@ import tkinter as tk
 from tkinter import filedialog
 
 # current month
-month = '2019-03'
+#month = '2019-03'
 
 # average wage
-avg_wage = 13.72
+#avg_wage = 13.72
 
 # file names
 bob_name = ''
@@ -22,12 +22,7 @@ sel_name = ''
 #humanity_out = 'humanity_out.xlsx'
 #sel_out = 'sel_out.xlsx'
 #joined_out = month + '_' + 'joined.xlsx'
-free_events_out = month + '_' + 'free_events.xlsx'
-nosale_out = month + '_' + 'no_sale.xlsx'
-paid_events_out = month + '_' + 'paid_events.xlsx'
-per_shift_out = month + '_' + 'per_shift.xlsx'
-per_event_out = month + '_' + 'per_event.xlsx'
-combined_out = month + '_' + 'combined.xlsx'
+
 
 standard_tz = timezone('US/Eastern')
 
@@ -124,6 +119,13 @@ def parse_eventid():
 	#data.to_excel("input/" + file_out + ".xlsx", index=None)
 
 def combine(): 
+
+	free_events_out = month.get() + '_' + 'free_events.xlsx'
+	nosale_out = month.get() + '_' + 'no_sale.xlsx'
+	paid_events_out = month.get() + '_' + 'paid_events.xlsx'
+	per_shift_out = month.get() + '_' + 'per_shift.xlsx'
+	per_event_out = month.get() + '_' + 'per_event.xlsx'
+	combined_out = month.get() + '_' + 'combined.xlsx'
 	# load data files
 	bob = pd.read_excel(bob_name, sheet_name=0)
 	#humanity = pd.read_excel('input/' + humanity_name)
@@ -214,7 +216,8 @@ def combine():
 		'3x4' : 'sum'})
 	# [['num_sales','total_time','box_type']].sum()
 	#print(per_shift)
-	per_shift['wage_cost'] = (avg_wage * per_shift['total_time']).round(decimals=2)
+	avg_wage_num = float(avg_wage.get())
+	per_shift['wage_cost'] = (avg_wage_num * per_shift['total_time']).round(decimals=2)
 
 	per_event = per_shift.groupby(['shift_title','office','event_id'], as_index=False).agg(
 		{'num_sales' : 'sum', 'total_time':'sum','wage_cost':'sum',
@@ -261,80 +264,102 @@ if __name__ == "__main__":
 
 #	combine(humanity)
 	root = tk.Tk()
+	root.title('hellofresh data combinatron 3000')
 	frame = tk.Frame(root)
-	root.geometry("400x300")
+	#root.geometry("500x200")
 	root.configure(background='#F2F5DC')
-	frame.pack()
+	frame.grid()
+	frame.configure(background='#F2F5DC')
 
-	combined_boolean = tk.IntVar();
-	nosale_boolean = tk.IntVar();
-	free_events_boolean = tk.IntVar();
-	paid_events_boolean = tk.IntVar();
-	per_shift_boolean = tk.IntVar();
-	per_event_boolean = tk.IntVar();
+	combined_boolean = tk.IntVar()
+	nosale_boolean = tk.IntVar()
+	free_events_boolean = tk.IntVar()
+	paid_events_boolean = tk.IntVar()
+	per_shift_boolean = tk.IntVar()
+	per_event_boolean = tk.IntVar()
+	avg_wage = tk.StringVar(frame, value='13.72');
+	month = tk.StringVar()
 
 	combined_cb = tk.Checkbutton(frame,
 						text="combined",
 						variable=combined_boolean,
 						#onvalue=True, offvalue=False
 				)
-	combined_cb.pack(side=tk.TOP)
+	#combined_cb.pack(side=tk.TOP)
+	combined_cb.grid(row=1, column=0)
 
 	nosale_cb = tk.Checkbutton(frame,
 						text="no sale events",
 						variable=nosale_boolean,
 						#onvalue=True, offvalue=False
 				)
-	nosale_cb.pack(side=tk.TOP)
+	nosale_cb.grid(row=2, column=0, padx=10, pady=10)
 
 	free_cb = tk.Checkbutton(frame,
 						text="free events",
 						variable=free_events_boolean,
 						#onvalue=True, offvalue=False
 				)
-	free_cb.pack(side=tk.TOP)
+	free_cb.grid(row=3, column=0, padx=10, pady=10)
 
 	paid_cb = tk.Checkbutton(frame,
 						text="paid events",
 						variable=paid_events_boolean,
 						#onvalue=True, offvalue=False
 				)
-	paid_cb.pack(side=tk.TOP)
+	paid_cb.grid(row=4, column=0, padx=10, pady=10)
 
 	shift_cb = tk.Checkbutton(frame,
 						text="per shift",
 						variable=per_shift_boolean,
 						#onvalue=True, offvalue=False
 				)
-	shift_cb.pack(side=tk.TOP)
+	shift_cb.grid(row=5, column=0, padx=10, pady=10)
 
 	event_cb = tk.Checkbutton(frame,
 						text="per event",
 						variable=per_event_boolean,
 						#onvalue=True, offvalue=False
 				)
-	event_cb.pack(side=tk.TOP)
+	event_cb.grid(row=6, column=0, padx=10, pady=10)
+
+	L1 = tk.Label(frame, text="average wage rate")
+	L1.grid(row=1, column=1)
+	wages_entry = tk.Entry(frame,
+						textvariable=avg_wage)
+	wages_entry.grid(row=2, column=1, padx=10, pady=10)
+
+	L2 = tk.Label(frame, text="month [YYYY-MM]")
+	L2.grid(row=3, column=1)
+	month_entry = tk.Entry(frame,
+						textvariable=month)
+	month_entry.grid(row=4, column=1, padx=10, pady=10)
 
 	bob_button = tk.Button(frame, 
 	                   text="Upload BOB File", 
 	                   command=open_bob)
 
-	bob_button.pack(side=tk.TOP)
+	bob_button.grid(row=1, column=2, padx=10, pady=10)
 
 	humanity_button = tk.Button(frame, 
 	                   text="Upload Humanity File", 
 	                   command=open_humanity)
-	humanity_button.pack(side=tk.TOP)
+	humanity_button.grid(row=2, column=2, padx=10, pady=10)
 
 	sel_button = tk.Button(frame, 
 	                   text="Upload SEL File", 
 	                   command=open_SEL)
-	sel_button.pack(side=tk.TOP)
+	sel_button.grid(row=3, column=2, padx=10, pady=10)
 
 	combine_button = tk.Button(frame,
-	                   text="Combine!",
-	                   command=combine)
-	combine_button.pack(side=tk.TOP)
+	                   text="COMBINE",
+	                   command=combine,
+	                   bg= '#5A9D3A',
+	                   highlightbackground='#5A9D3A')
+	combine_button.grid(row=4, column=2, padx=10, pady=10)
+
+	title = tk.Label(frame, text="HELLOFRESH DATA COMBINATRON 3000")
+	title.grid(row=0, column=1, padx=10, pady=10)
 
 	root.mainloop()
 	
